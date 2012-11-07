@@ -1,0 +1,53 @@
+
+body {
+  font: 10px sans-serif;
+  //background-image: url("http://thepaperwall.com/wallpapers/vintage_historical/big/big_f0868392cad10266a59e8f65aca0bca2cd625c26.jpg");
+}
+
+svg {
+  padding: 10px 130px;
+}
+
+.arc {
+  stroke: #fff;
+}
+
+#leftFrame {
+    font-family: 'Port Lligat Sans', sans-serif;
+    font-size: 20px;
+    postion:relative;
+    float:left;
+    height:250px;
+    width:250px;     
+}
+
+#mainFrame {
+  margin: 0px auto;
+  overflow:auto;
+}
+ 
+
+.demo, .repo, .demo-bold, .repo-bold {
+    color: #aaa;
+    font-size: 28px;
+    font-family: 'Monsieur La Doulaise', cursive;
+    //font-family: 'Great Vibes', cursive;
+}
+
+.repo, .repo-bold {
+    text-align:right;
+}
+
+.demo-bold, .repo-bold {
+    color: #000;
+}
+
+.year {
+    font-size: 20px;
+    //font-family: 'Port Lligat Sans', sans-serif;
+    font-family: 'Great Vibes', cursive;
+}
+
+.bold {
+    font-weight: bold;
+}
