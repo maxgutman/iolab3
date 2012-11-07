@@ -105,7 +105,13 @@ d3.csv("data.csv", function(error, data) {
         .attr('width', 150)
         .attr('height', 50)
         .append("xhtml:body")
-        .attr('class', 'demo')
+        .attr('class', function(d) {
+            var sClass = 'candidate democrat'
+            if(parseInt(d.Democratic) > parseInt(d.Republican)) {
+                return sClass + ' bold';
+            }
+            return sClass;
+        })
         .text(function(d) { return d.DemocraticPresident; });
 
     var republican = svg.append('foreignObject')
@@ -114,20 +120,13 @@ d3.csv("data.csv", function(error, data) {
         .attr('width', 150)
         .attr('height', 50)
         .append("xhtml:body")
-        .attr('class', 'repo')
+        .attr('class', function(d) {
+            var sClass = 'candidate republican'
+            if(parseInt(d.Republican) > parseInt(d.Democratic)) {
+                return sClass + ' bold';
+            }
+            return sClass;
+        })
         .text(function(d) { return d.RepublicanPresident; });
-
-    republican.attr('class', function(d) {
-        if(parseInt(d.Republican) > parseInt(d.Democratic)) {
-            return 'repo-bold';
-        }
-        return 'repo';
-    });
-    democrat.attr('class', function(d) {
-        if(parseInt(d.Democratic) > parseInt(d.Republican)) {
-            return 'demo-bold';
-        }
-        return 'demo';
-    });
 
 });

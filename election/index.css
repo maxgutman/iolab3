@@ -27,18 +27,18 @@ svg {
 }
  
 
-.demo, .repo, .demo-bold, .repo-bold {
+.candidate {
     color: #aaa;
     font-size: 28px;
     font-family: 'Monsieur La Doulaise', cursive;
     //font-family: 'Great Vibes', cursive;
 }
 
-.repo, .repo-bold {
+.republican {
     text-align:right;
 }
 
-.demo-bold, .repo-bold {
+.pie  .bold {
     color: #000;
 }
 
@@ -46,8 +46,4 @@ svg {
     font-size: 20px;
     //font-family: 'Port Lligat Sans', sans-serif;
     font-family: 'Great Vibes', cursive;
-}
-
-.bold {
-    font-weight: bold;
 }
