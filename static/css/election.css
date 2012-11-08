@@ -43,14 +43,15 @@ svg {
 
 .pie  .bold {
     color: #000;
-            -webkit-font-smoothing: subpixel-antialiased;
+    -webkit-font-smoothing: subpixel-antialiased;
 }
 
 .term {
     font-size: 14px;
     display: block;
     color: green;
-    font-family: 'Port Lligat Sans', sans-serif;    
+    font-family: 'Port Lligat Sans', sans-serif;
+    -webkit-font-smoothing: subpixel-antialiased;
 }
 
 .year {
