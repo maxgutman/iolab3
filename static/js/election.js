@@ -11,7 +11,7 @@ var pie = d3.layout.pie()
         return d.votes;
     });
 
-d3.csv("elections_data.csv", function(error, data) {
+d3.csv("static/data/elections_data.csv", function(error, data) {
     color.domain(d3.keys(data[0]).filter(function(key) { return key=="Democratic" || key=="Republican" || key=="Others" ; }));
 
     data.forEach(function(d) {
@@ -52,8 +52,8 @@ d3.csv("elections_data.csv", function(error, data) {
         .attr("width", "48px")
         .attr("height", "48px")
         .attr("xlink:href", function(d) {
-            if(d == "Republican"){ return "elephant.png"; }
-            else if(d == "Democratic"){ return "donkey.png"; }
+            if(d == "Republican"){ return "static/images/elephant.png"; }
+            else if(d == "Democratic"){ return "static/images/donkey.png"; }
         });
 
     /*

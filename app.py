@@ -25,6 +25,10 @@ TWITTER_NUM_RESULTS = 100
 TWITTER_PAGES_TO_POLL = 3
 
 
+@app.route('/election')
+def election():
+    return render_template('election.html')
+
 @app.route('/')
 def main():
     auth = session.get('auth')
