@@ -19,7 +19,7 @@ var pie = d3.layout.pie()
     });
 
 
-d3.csv("data.csv", function(error, data) {
+d3.csv("elections_data.csv", function(error, data) {
     color.domain(d3.keys(data[0]).filter(function(key) { return key=="Democratic" || key=="Republican" || key=="Others" ; }));
 
     data.forEach(function(d) {

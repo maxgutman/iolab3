@@ -1,0 +1,62 @@
+Year,Democratic Electoral Votes,Republican Electoral Votes,Other Electoral Votes,Democratic Presidential Candidate,Republican Presidential Candidate,Democratic VP Candidate,Republican VP Candidate,Winner (name of party),Democratic Popular Votes,Republican Popular Votes,Other Popular Votes
+2008,364,163,0,Barack Obama,John McCain,Joe Biden,Sarah Palin,Democratic,65445394,57446223,1506933
+2004,251,286,0,John Kerry,George W. Bush,John Edwards,Dick Cheney,Republican,59028439,62040610,1125278
+2000,266,271,0,Al Gore,George W. Bush,Joe Lieberman,Dick Cheney,Republican,50999897,50456002,3716281
+1996,379,159,0,Bill Clinton,Bob Dole,Al Gore,Jack Kemp,Democratic,45590703,37816307,9222030
+1992,370,168,0,Bill Clinton ,George H.W. Bush,Al Gore,Dan Quayle,Democratic,44909326,39103882,20140298
+1988,111,426,1,Michael Dukakis,George H.W. Bush,Lloyd M. Bentsen,Dan Quayle,Republican,41809476,48886597,648971
+1984,13,525,0,Walter Mondale,Ronald Reagan,Geraldine Ferraro,George H.W. Bush,Republican,37577185,54455075,228111
+1980,49,489,0,Jimmy Carter,Ronald Reagan,Walter Mondale,George H.W. Bush,Republican,43904153,35483883,6872024
+1976,297,240,1,Jimmy Carter,Gerald R. Ford,Walter Mondale,Bob Dole,Democratic,40830763,39147793,1257729
+1972,17,520,1,George McGovern ,Richard Nixon ,Sargent Shriver,Spiro Agnew,Republican,29170383,47169911,1104542
+1968,191,301,46,Hubert Humphrey ,Richard Nixon,Edmund Muskie,Spiro Agnew,Republican,31275166,31785480,9906473
+1964,486,52,,Lyndon Johnson,Barry Goldwater,Hubert Humphrey,William Miller,Democratic,43129566,27178188,
+1960,303,219,15,John F. Kennedy,Richard Nixon,Lyndon Johnson,Henry Lodge,Democratic,34226731,34108157,
+1956,73,457,1,Adlai Stevenson,Dwight Eisenhower ,Estes Kefauver,Richard Nixon,Republican,26022752,35590472,107929
+1952,89,442,0,Adlai Stevenson,Dwight Eisenhower,John Sparkman,Richard Nixon,Republican,27314992,33936234,140746
+1948,303,189,39,Harry S. Truman,Thomas Dewey,Alben Barkley,Earl Warren,Democratic,24179345,21991291,2569470
+1944,432,99,,Franklin D. Roosevelt,Thomas Dewey,Harry Truman,John Bricker ,Democratic,25612610,22117617,
+1940,449,82,0,Franklin D. Roosevelt,Wendell Willkie,Henry Wallace,Charles McNary,Democratic,27313041,22348480,116599
+1936,523,8,0,Franklin D. Roosevelt,Alfred Landon,John Garner,Frank Knox,Democratic,27757333,16684231,1080288
+1932,472,59,0,Franklin D. Roosevelt ,Herbert C. Hoover ,John Garner,Charles Curtis,Democratic,22829501,15760684,988088
+1928,87,444,0,Alfred E. Smith,Herbert C. Hoover,Joseph Robinson,Charles Curtis,Republican,15007698,21437277,267478
+1924,136,382,13,John Davis,Calvin Coolidge ,Charles Bryan,Charles Dawes,Republican,8386704,15719921,4822856
+1920,127,404,0,James Cox ,Warren G. Harding,Franklin D. Roosevelt,Calvin Coolidge ,Republican,9133092,16153115,1367878
+1916,277,254,0,Woodrow Wilson,Charles Hughes,Thomas Marshall,Charles Fairbanks,Democratic,9126300,8546789,811826
+1912,435,8,88,Woodrow Wilson,William Taft,Thomas Marshall,Nicholas Butler ,Democratic,6293152,3483922,5228914
+1908,162,321,0,William Bryan,William Taft,John Kern,James Sherman,Republican,6406801,7676258,674939
+1904,140,336,0,Alton Parker,Theodore Roosevelt ,Henry Davis,Charles Fairbanks,Republican,5082898,7626593,775975
+1900,155,292,0,William Bryan,William McKinley,Adlai Stevenson,Theodore Roosevelt,Republican,6358345,7218039,210867
+1896,176,271,0,William Bryan,William McKinley,"Arthur Sewall (149) /
+Thomas Watson (27) ",Garret Hobart,Republican,6511495,7108480,258433
+1892,277,145,22,Grover Cleveland ,Benjamin Harrison,Adlai Stevenson,Whitelaw Reid ,Democratic,5551883,5179244,1298218
+1888,168,233,0,Grover Cleveland ,Benjamin Harrison,Allen Thurman,Levi Morton,Republican,5534488,5443892,399132
+1884,219,182,0,Grover Cleveland ,James G. Blaine,Thomas Hendricks,John Logan,Democratic,4874621,4848936,285184
+1880,155,214,0,Winfield S. Hancock ,James Garfield,William English,Chester Arthur,Republican,4444260,4446158,306135
+1876,184,185,,Samuel Tilden,Rutherford B. Hayes,Thomas Hendricks,William Wheeler,Republican,4288546,4034311,
+1872,62,286,1,Horace Greeley,Ulysses S. Grant,B. Gratz Brown,Henry Wilson,Republican,2834761,3598235,
+1868,80,214,,Horatio Seymour,Ulysses S. Grant ,"Francis Blair, Jr. ",Schuyler Colfax,Republican,2708744,3013650,
+1864,21,212,,George B. McClellan,Abraham Lincoln,George Pendleton,Andrew Johnson,Republican,1812807,2218388,
+1860,12,180,111,Stephen Douglas,Abraham Lincoln,Herschel Johnson ,Hannibal Hamlin,Republican,1381944,1865908,1438965
+1856,174,114,8,James Buchanan,John Frémont,John Breckenridge,William Dayton,Democratic,1836072,1342345,872703
+1852,254,,42,Franklin Pierce,,William King,,Democratic,1607510,,1542741
+1848,127,,163,Lewis Cass,,William O. Butler ,,,1223460,,1390540
+1844,170,,105,James K. Polk,,George M. Dallas,,Democratic,1339494,,1300004
+1840,60,,234,Martin Van Buren,,Richard Johnson,,,1128854,,1275390
+1836,170,,124,Martin Van Buren,,Richard Johnson ,,Democratic,764176,,738124
+1832,219,,67,Andrew Jackson,,Martin Van Buren ,,Democratic,701780,,584022
+1828,178,,83,Andrew Jackson,,John Calhoun ,,Democratic,642553,,500897
+1824,,,253,,,,,,,,352970
+1820,,231,1,,John Quincy Adams,,Richard Stockton ,,,,
+1816,,,217,,,,,,,,
+1812,,,217,,,,,,,,
+1808,,,175,,,,,,,,
+1804,,,176,,,,,,,,
+1800,,,276,,,,,,,,
+1796,,,276,,,,,,,,
+1792,,,264,,,,,,,,
+1789,,,138,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
