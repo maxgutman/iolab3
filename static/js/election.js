@@ -104,7 +104,7 @@ d3.csv("static/data/elections_data.csv", function(error, data) {
         .attr('x', 80)
         .attr('y', -20)
         .attr('width', 150)
-        .attr('height', 50)
+        .attr('height', 100)
         .append("xhtml:body")
         .attr('class', function(d) {
             var sClass = 'candidate democrat'
@@ -113,13 +113,13 @@ d3.csv("static/data/elections_data.csv", function(error, data) {
             }
             return sClass;
         })
-        .text(function(d) { return d.DemocraticLastName; });
+        .html(function(d) { return d.DemocraticLastName + '<span class="term">' + d.DemocraticTerm + '</span>'; });
 
     var republican = svg.append('foreignObject')
         .attr('x', -230)
         .attr('y', -20)
         .attr('width', 150)
-        .attr('height', 50)
+        .attr('height', 100)
         .append("xhtml:body")
         .attr('class', function(d) {
             var sClass = 'candidate republican'
@@ -128,7 +128,8 @@ d3.csv("static/data/elections_data.csv", function(error, data) {
             }
             return sClass;
         })
-        .text(function(d) { return d.RepublicanLastName; });
+        .html(function(d) { return d.RepublicanLastName + '<span class="term">' + d.RepublicanTerm + '</span>'; });
+
 
 });
 

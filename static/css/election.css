@@ -2,6 +2,8 @@
 body {
   font: 10px sans-serif;
   //background-image: url("http://thepaperwall.com/wallpapers/vintage_historical/big/big_f0868392cad10266a59e8f65aca0bca2cd625c26.jpg");
+  background: url(/static/images/ricepaper2.png); 
+  background-repeat: repeat; 
 }
 
 svg {
@@ -28,10 +30,11 @@ svg {
  
 
 .candidate {
-    color: #aaa;
+    color: #666;
     font-size: 28px;
     font-family: 'Monsieur La Doulaise', cursive;
     //font-family: 'Great Vibes', cursive;
+        -webkit-font-smoothing: antialiased;
 }
 
 .republican {
@@ -40,6 +43,14 @@ svg {
 
 .pie  .bold {
     color: #000;
+            -webkit-font-smoothing: subpixel-antialiased;
+}
+
+.term {
+    font-size: 14px;
+    display: block;
+    color: green;
+    font-family: 'Port Lligat Sans', sans-serif;    
 }
 
 .year {
