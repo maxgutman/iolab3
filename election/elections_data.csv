@@ -1,4 +1,4 @@
-Year,Democratic Electoral Votes,Republican Electoral Votes,Other Electoral Votes,Democratic Presidential Candidate,Republican Presidential Candidate,Democratic VP Candidate,Republican VP Candidate,Winner (name of party),Democratic Popular Votes,Republican Popular Votes,Other Popular Votes
+Year,Democratic,Republican,Others,DemocraticPresident,RepublicanPresident,DemocraticVP,RepublicanVP,WinnerParty,DemocraticPopularVotes,RepublicanPopularVotes,OtherPopularVotes
 2008,364,163,0,Barack Obama,John McCain,Joe Biden,Sarah Palin,Democratic,65445394,57446223,1506933
 2004,251,286,0,John Kerry,George W. Bush,John Edwards,Dick Cheney,Republican,59028439,62040610,1125278
 2000,266,271,0,Al Gore,George W. Bush,Joe Lieberman,Dick Cheney,Republican,50999897,50456002,3716281
