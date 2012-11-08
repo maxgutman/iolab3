@@ -1,32 +1,32 @@
-var radius = 74,
+var radiusMax = 74,
+    radiusMin = 20,
+    rangeFrom = 138,
+    rangeTo = 527,
     padding = 10;
 
-var color = d3.scale.ordinal()
-    .range(["#2260AB", "#F58583", "#CCC"]);
-
-var arc = d3.svg.arc()
-    .outerRadius(radius)
-    .innerRadius(radius - 35);
-
-var arcOver = d3.svg.arc()
-    .outerRadius(radius + 20)
-    .innerRadius(radius + 20 - 35);
+var color = d3.scale.ordinal().range(["#2B6EE0", "#CB1D1F", "#CCC"]);
 
 var pie = d3.layout.pie()
-    .sort(null)
     .value(function(d) {
         return d.votes;
     });
-
 
 d3.csv("elections_data.csv", function(error, data) {
     color.domain(d3.keys(data[0]).filter(function(key) { return key=="Democratic" || key=="Republican" || key=="Others" ; }));
 
     data.forEach(function(d) {
         d.votes = color.domain().map(function(name) {
-            return {name: name, votes: +d[name]};
+            return {name: name, votes: +d[name], TotalVotes: parseInt(d['TotalVotes'])};
         });
     });
+
+    var arc = d3.svg.arc()
+        .outerRadius(function(d) {
+            return scale(d.data.TotalVotes);
+        })
+        .innerRadius(function(d) {
+            return scale(d.data.TotalVotes) - (scale(d.data.TotalVotes) * 0.5);
+        });
 
     var legend = d3.select("#leftFrame")
         .append("svg")
@@ -55,6 +55,7 @@ d3.csv("elections_data.csv", function(error, data) {
             if(d == "Republican"){ return "elephant.png"; }
             else if(d == "Democratic"){ return "donkey.png"; }
         });
+
     /*
     legend.append("text")
         .attr("x", 24)
@@ -68,8 +69,8 @@ d3.csv("elections_data.csv", function(error, data) {
         .enter()
         .append("svg")
         .attr("class", "pie")
-        .attr("width", radius * 2.2)
-        .attr("height", radius * 2.2)
+        .attr("width", 165)
+        .attr("height", 165)
         .append("g")
         /*
         .on("mouseover", function(d) {
@@ -81,7 +82,7 @@ d3.csv("elections_data.csv", function(error, data) {
             .attr("d", arcOver);
         })
         */
-        .attr("transform", "translate(" + radius + "," + radius + ")");
+        .attr("transform", function(d){ return "translate(" + radiusMax + "," + radiusMax + ")"});
 
     svg.selectAll(".arc")
         .data(function(d) { return pie(d.votes); })
@@ -100,7 +101,7 @@ d3.csv("elections_data.csv", function(error, data) {
         .text(function(d) { return d.Year; });
 
     var democrat = svg.append('foreignObject')
-        .attr('x', radius + 5)
+        .attr('x', 80)
         .attr('y', -20)
         .attr('width', 150)
         .attr('height', 50)
@@ -112,7 +113,7 @@ d3.csv("elections_data.csv", function(error, data) {
             }
             return sClass;
         })
-        .text(function(d) { return d.DemocraticPresident; });
+        .text(function(d) { return d.DemocraticLastName; });
 
     var republican = svg.append('foreignObject')
         .attr('x', -230)
@@ -127,6 +128,18 @@ d3.csv("elections_data.csv", function(error, data) {
             }
             return sClass;
         })
-        .text(function(d) { return d.RepublicanPresident; });
+        .text(function(d) { return d.RepublicanLastName; });
 
 });
+
+/* SCALE MATH
+OUTER::
+MAX = 74
+MIN = 20
+RANGE_FROM = 138
+RANGE_TO = 527
+F(X) = (MAX-MIN)*(X-RANGE_FROM)/(RANGE_TO-RANGE_FROM)+MIN
+*/
+function scale(votes) {
+    return (radiusMax-radiusMin)*(votes-rangeFrom)/(rangeTo-rangeFrom)+radiusMin;
+}
