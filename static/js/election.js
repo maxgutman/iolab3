@@ -89,7 +89,6 @@ d3.csv("static/data/elections_data.csv", function(error, data) {
         .enter()
         .append("path")
         .style("fill", "white")
-        .style("stroke", "#eee")
         .attr("class", "arc")
         .attr("d", arc)
         .style("fill", function(d) { return color(d.data.name); });

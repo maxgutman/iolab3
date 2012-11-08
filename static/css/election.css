@@ -11,7 +11,7 @@ svg {
 }
 
 .arc {
-  stroke: #fff;
+  stroke: #333;
 }
 
 #leftFrame {
@@ -34,7 +34,7 @@ svg {
     font-size: 28px;
     font-family: 'Monsieur La Doulaise', cursive;
     //font-family: 'Great Vibes', cursive;
-        -webkit-font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
 }
 
 .republican {
