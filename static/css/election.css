@@ -1,13 +1,23 @@
 
 body {
-  font: 10px sans-serif;
-  //background-image: url("http://thepaperwall.com/wallpapers/vintage_historical/big/big_f0868392cad10266a59e8f65aca0bca2cd625c26.jpg");
+  margin: 0;
+  /*font: 10px sans-serif;*/
+  /*//background-image: url("http://thepaperwall.com/wallpapers/vintage_historical/big/big_f0868392cad10266a59e8f65aca0bca2cd625c26.jpg");*/
   background: url(/static/images/ricepaper2.png); 
   background-repeat: repeat; 
+  font-family: 'Cherry Swash', cursive;
 }
 
 svg {
-  padding: 10px 130px;
+  padding: 47px 10px 10px 27px;
+  margin: 20px;
+  /*border: 1px solid;  */
+  /*border-radius: 500px;*/
+}
+
+svg.legend {
+  padding: 5px;
+  border: 2px solid #666;
 }
 
 .arc {
@@ -23,10 +33,10 @@ svg {
     width:250px;     
 }
 
-#mainFrame {
+/*#mainFrame {
   margin: 0px auto;
   overflow:auto;
-}
+}*/
  
 
 .candidate {
@@ -56,6 +66,151 @@ svg {
 
 .year {
     font-size: 20px;
-    //font-family: 'Port Lligat Sans', sans-serif;
-    font-family: 'Great Vibes', cursive;
+    /*//font-family: 'Port Lligat Sans', sans-serif;*/
+    /*font-family: 'Great Vibes', cursive;*/
 }
+
+.header {
+  font-size: 20px;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  /*background: #003866;*/
+  background: #30302f;
+  width: 100%;
+  padding: 0 10px;
+  color: #fff;
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 24px;
+}
+
+nav h3 {
+  margin: 10px 0;
+}
+
+.container {
+  margin: 0 auto;
+}
+
+#smallMultiples {
+  margin-top: 50px;
+  padding: 10px;
+}
+
+.shadow {
+  -webkit-box-shadow: 0 3px 3px #888;
+     -moz-box-shadow: 0 3px 3px #888;
+          box-shadow: 0 3px 3px #888;
+}
+
+
+/**************************************************************************
+TIPSY TOOLTIPS
+**************************************************************************/
+
+.tipsy { font-size: 14px; position: absolute; padding: 5px; z-index: 100000; font-family: 'Anaheim', sans-serif; }
+  .tipsy-inner { background-color: #000; color: #FFF; max-width: 100px; padding: 5px 8px 4px 8px; }
+
+  /* Rounded corners */
+  .tipsy-inner { border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; }
+  
+  /* Uncomment for shadow */
+  /*.tipsy-inner { box-shadow: 0 0 5px #000000; -webkit-box-shadow: 0 0 5px #000000; -moz-box-shadow: 0 0 5px #000000; }*/
+  
+  .tipsy-arrow { position: absolute; width: 0; height: 0; line-height: 0; border: 5px dashed #000; }
+  
+  /* Rules to colour arrows */
+  .tipsy-arrow-n { border-bottom-color: #000; }
+  .tipsy-arrow-s { border-top-color: #000; }
+  .tipsy-arrow-e { border-left-color: #000; }
+  .tipsy-arrow-w { border-right-color: #000; }
+  
+  .tipsy-n .tipsy-arrow { top: 0px; left: 50%; margin-left: -5px; border-bottom-style: solid; border-top: none; border-left-color: transparent; border-right-color: transparent; }
+    .tipsy-nw .tipsy-arrow { top: 0; left: 10px; border-bottom-style: solid; border-top: none; border-left-color: transparent; border-right-color: transparent;}
+    .tipsy-ne .tipsy-arrow { top: 0; right: 10px; border-bottom-style: solid; border-top: none;  border-left-color: transparent; border-right-color: transparent;}
+  .tipsy-s .tipsy-arrow { bottom: 0; left: 50%; margin-left: -5px; border-top-style: solid; border-bottom: none;  border-left-color: transparent; border-right-color: transparent; }
+    .tipsy-sw .tipsy-arrow { bottom: 0; left: 10px; border-top-style: solid; border-bottom: none;  border-left-color: transparent; border-right-color: transparent; }
+    .tipsy-se .tipsy-arrow { bottom: 0; right: 10px; border-top-style: solid; border-bottom: none; border-left-color: transparent; border-right-color: transparent; }
+  .tipsy-e .tipsy-arrow { right: 0; top: 50%; margin-top: -5px; border-left-style: solid; border-right: none; border-top-color: transparent; border-bottom-color: transparent; }
+  .tipsy-w .tipsy-arrow { left: 0; top: 50%; margin-top: -5px; border-right-style: solid; border-left: none; border-top-color: transparent; border-bottom-color: transparent; }
+
+November 17, 2011
+
+
+
+/**************************************************************************
+MEDIA QUERIES
+**************************************************************************/
+
+
+@media screen
+and (min-width : 1250px) {
+  .container {
+    width: 1250px;
+  }
+  
+}
+
+@media screen
+and (max-width : 1249px)
+and (min-width : 1025px) {
+  .container {
+    width: 1000px;
+  }
+}
+
+/* iPads (landscape) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : landscape) {
+  .container {
+    width: 768px;
+  }
+}
+
+/* iPads (portrait) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : portrait) {
+  
+    
+}
+
+/* iPhone 5 (landscape) ----------- */
+@media only screen
+and (min-width : 480px)
+and (max-width: 568px)
+and (orientation : landscape) {
+  
+  svg {
+    margin-left: 0;
+  }
+}
+
+/* Smartphones (landscape) ----------- */
+@media only screen 
+and (min-width : 321px)
+and (max-width: 480px)
+and (orientation : landscape) {
+  nav {
+    font-size: 18px;
+  }
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen 
+and (max-width : 320px)
+and (orientation : portrait) {
+  
+  svg {
+    margin-left: 0;
+  }
+  nav {
+    font-size: 18px;
+  }
+}
+
