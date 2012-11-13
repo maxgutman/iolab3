@@ -1,8 +1,6 @@
 
 body {
   margin: 0;
-  /*font: 10px sans-serif;*/
-  /*//background-image: url("http://thepaperwall.com/wallpapers/vintage_historical/big/big_f0868392cad10266a59e8f65aca0bca2cd625c26.jpg");*/
   background: url(/static/images/ricepaper2.png); 
   background-repeat: repeat; 
   font-family: 'Cherry Swash', cursive;
@@ -24,50 +22,8 @@ svg.legend {
   stroke: #333;
 }
 
-#leftFrame {
-    font-family: 'Port Lligat Sans', sans-serif;
-    font-size: 20px;
-    postion:relative;
-    float:left;
-    height:250px;
-    width:250px;     
-}
-
-/*#mainFrame {
-  margin: 0px auto;
-  overflow:auto;
-}*/
- 
-
-.candidate {
-    color: #666;
-    font-size: 28px;
-    font-family: 'Monsieur La Doulaise', cursive;
-    //font-family: 'Great Vibes', cursive;
-    -webkit-font-smoothing: antialiased;
-}
-
-.republican {
-    text-align:right;
-}
-
-.pie  .bold {
-    color: #000;
-    -webkit-font-smoothing: subpixel-antialiased;
-}
-
-.term {
-    font-size: 14px;
-    display: block;
-    color: green;
-    font-family: 'Port Lligat Sans', sans-serif;
-    -webkit-font-smoothing: subpixel-antialiased;
-}
-
 .year {
     font-size: 20px;
-    /*//font-family: 'Port Lligat Sans', sans-serif;*/
-    /*font-family: 'Great Vibes', cursive;*/
 }
 
 .header {
@@ -77,7 +33,6 @@ svg.legend {
 nav {
   position: fixed;
   top: 0;
-  /*background: #003866;*/
   background: #30302f;
   width: 100%;
   padding: 0 10px;
@@ -96,6 +51,7 @@ nav h3 {
 
 #smallMultiples {
   margin-top: 50px;
+  margin-bottom: 40px;
   padding: 10px;
 }
 
@@ -136,7 +92,6 @@ TIPSY TOOLTIPS
   .tipsy-e .tipsy-arrow { right: 0; top: 50%; margin-top: -5px; border-left-style: solid; border-right: none; border-top-color: transparent; border-bottom-color: transparent; }
   .tipsy-w .tipsy-arrow { left: 0; top: 50%; margin-top: -5px; border-right-style: solid; border-left: none; border-top-color: transparent; border-bottom-color: transparent; }
 
-November 17, 2011
 
 
 
@@ -150,7 +105,6 @@ and (min-width : 1250px) {
   .container {
     width: 1250px;
   }
-  
 }
 
 @media screen
@@ -186,8 +140,12 @@ and (min-width : 480px)
 and (max-width: 568px)
 and (orientation : landscape) {
   
-  svg {
-    margin-left: 0;
+  h3 {
+    font-size: 20px;
+  }
+
+  .container {
+    width: 520px;
   }
 }
 
@@ -196,8 +154,14 @@ and (orientation : landscape) {
 and (min-width : 321px)
 and (max-width: 480px)
 and (orientation : landscape) {
-  nav {
-    font-size: 18px;
+  h3 {
+    font-size: 20px;
+  }
+  .container {
+    width: 480px;
+  }
+  svg {
+    margin: 20px 10px;
   }
 }
 
@@ -206,11 +170,15 @@ and (orientation : landscape) {
 and (max-width : 320px)
 and (orientation : portrait) {
   
-  svg {
-    margin-left: 0;
+  h3 {
+    font-size: 20px;
+    text-align: center;
   }
-  nav {
-    font-size: 18px;
+  /*.container {
+    width: 250px;
+  }*/
+  svg {
+    margin-left: 50px;
   }
 }
 

@@ -1,20 +1,19 @@
+
+// set initial variable values
 var radiusMax = 74,
     radiusMin = 20,
     rangeFrom = 138,
     rangeTo = 527,
     padding = 10;
 
-// var color = d3.scale.ordinal().range(["#2B6EE0", "#CB1D1F", "#666"]);
-var color = d3.scale.ordinal().range(["#4579ad", "#d53f37", "#CCC"]);
+var color = d3.scale.ordinal()
+    .range(["#4579ad", "#d53f37", "#CCC"]);
 
 var pie = d3.layout.pie()
-    .value(function(d) {
-        return d.votes;
-    });
+    .value(function(d) { return d.votes; });
 
 d3.csv("static/data/elections_data.csv", function(error, data) {
-    var dataSet = color.domain(d3.keys(data[0]).filter(function(key) { return key=="Democratic" || key=="Republican" || key=="Others" ; }));
-    // color.domain(d3.keys(data[0]).filter(function(key) { return key=="DemocraticPopularVotes" || key=="RepublicanPopularVotes" || key=="OtherPopularVotes" ; }));
+    var dataset = color.domain(d3.keys(data[0]).filter(function(key) { return key=="Democratic" || key=="Republican" || key=="Others" ; }));
 
     data.forEach(function(d) {
         d.votes = color.domain().map(function(name) {
@@ -22,6 +21,8 @@ d3.csv("static/data/elections_data.csv", function(error, data) {
         });
     });
 
+
+    // set values of inner and outer radius based on total number of electoral votes
     var arc = d3.svg.arc()
         .outerRadius(function(d) {
             return scale(d.data.TotalVotes);
@@ -30,17 +31,12 @@ d3.csv("static/data/elections_data.csv", function(error, data) {
             return scale(d.data.TotalVotes) - (scale(d.data.TotalVotes) * 0.5);
         });
 
+    // draw legend
     var legend = d3.select("#smallMultiples")
         .append("svg")
         .attr("class", "legend")
         .attr("width", 188)
         .attr("height", 228);
-        
-    // legend.selectAll("g")
-    //     .data(color.domain().slice())
-    //     .enter()
-    //     .append("g")
-    //     .attr("transform", function(d, i) { return "translate(0," + i * 40 + ")"; });
 
     legend.append('text')
         .attr('x', 8)
@@ -108,24 +104,7 @@ d3.csv("static/data/elections_data.csv", function(error, data) {
         .attr('y', 202)
         .text('Incumbent Lost');
 
-    // legend.append("svg:image")
-    //     .attr("x", "44px")
-    //     .attr("y", "0")
-    //     .attr("width", "48px")
-    //     .attr("height", "48px")
-    //     .attr("xlink:href", function(d) {
-    //         if(d == "Republican"){ return "static/images/elephant.png"; }
-    //         else if(d == "Democratic"){ return "static/images/donkey.png"; }
-    //     });
-
-    /*
-    legend.append("text")
-        .attr("x", 24)
-        .attr("y", 9)
-        .attr("dy", ".35em")
-        .text(function(d) { return d; });
-    */
-
+    // draw svg
     var svg = d3.select("#smallMultiples")
         .selectAll("pie")
         .data(data)
@@ -135,19 +114,10 @@ d3.csv("static/data/elections_data.csv", function(error, data) {
         .attr("width", 165)
         .attr("height", 185)
         .append("g")
-        /*
-        .on("mouseover", function(d) {
-          var currPie = d3.select(this);
-              currPie.attr("transform", "translate(" + radius* 2 + "," + radius * 2 + ")");
-          d3.select(this)
-            .transition()
-            .duration(300)
-            .attr("d", arcOver);
-        })
-        */
-        .attr("transform", function(d){ return "translate(" + radiusMax + "," + radiusMax + ")"});
+        .attr("transform", "translate(" + radiusMax + "," + radiusMax + ")");
 
-    svg.selectAll(".arc")
+    // bind electoral vote data and draw path
+    var path = svg.selectAll(".arc")
         .data(function(d) { return pie(d.votes); })
         .enter()
         .append("path")
@@ -156,17 +126,17 @@ d3.csv("static/data/elections_data.csv", function(error, data) {
         .attr("d", arc)
         .style("fill", function(d) { return color(d.data.name); });
 
-
-    // adds a tooltip using the Tipsy library
+    // add a tooltip using the Tipsy library
     $('svg g').tipsy({ 
-        gravity: 'w', 
+        gravity: 'n', 
         html: true, 
         title: function() {
             var d = this.__data__;
-            return "Democratic: " + d.Democratic + " Republican: " + d.Republican + " Other: " + d.Others;; 
+            return "Democratic: " + d.Democratic + " Republican: " + d.Republican + " Other: " + d.Others;
         }
     });
 
+    // add year to center of donut
     var year = svg.append("text")
         .attr("dy", ".35em")
         .attr('class', 'year')
@@ -185,6 +155,7 @@ d3.csv("static/data/elections_data.csv", function(error, data) {
             return "#666";
         }
     });
+
 
     // draw rectangular border around small multiples with color indicating winning party
     svg.append("rect")
@@ -233,15 +204,6 @@ d3.csv("static/data/elections_data.csv", function(error, data) {
         .attr('cy', -100)
         .attr('r', 10)
         .style('fill', function(d) {
-            // if(d.Repeat == "TRUE" && d.WinnerParty == "Democratic") {
-            //     return "#4579ad";
-            // }
-            // else if(d.Repeat == "TRUE" && d.WinnerParty == "Republican") {
-            //     return "#d53f37";
-            // }
-            // else if(d.Repeat == "TRUE" && d.WinnerParty == "Other") {
-            //     return "#666";
-            // }
             if (d.Repeat == "TRUE") {
                 return "#666";
             }
@@ -267,7 +229,7 @@ d3.csv("static/data/elections_data.csv", function(error, data) {
         .style('stroke-width', 2);
 
     // Write name of runner-up below donut diagram 
-    var vp = svg.append('svg:text')
+    var runnerUp = svg.append('svg:text')
         .attr('x', -90)
         .attr('y', 105)
         .attr('width', 180)
@@ -287,40 +249,33 @@ d3.csv("static/data/elections_data.csv", function(error, data) {
             return d.RunnerUp;
         });
 
-
-    // var democrat = svg.append('foreignObject')
-    //     .attr('x', 80)
-    //     .attr('y', -20)
-    //     .attr('width', 150)
-    //     .attr('height', 100)
-    //     .append("xhtml:body")
-    //     .attr('class', function(d) {
-    //         var sClass = 'candidate democrat'
-    //         if(parseInt(d.Democratic) > parseInt(d.Republican)) {
-    //             return sClass + ' bold';
-    //         }
-    //         return sClass;
-    //     })
-    //     .html(function(d) { return d.DemocraticLastName + '<span class="term">' + d.DemocraticTerm + '</span>'; });
-
-    // var republican = svg.append('foreignObject')
-    //     .attr('x', -230)
-    //     .attr('y', -20)
-    //     .attr('width', 150)
-    //     .attr('height', 100)
-    //     .append("xhtml:body")
-    //     .attr('class', function(d) {
-    //         var sClass = 'candidate republican'
-    //         if(parseInt(d.Republican) > parseInt(d.Democratic)) {
-    //             return sClass + ' bold';
-    //         }
-    //         return sClass;
-    //     })
-    //     .html(function(d) { return d.RepublicanLastName + '<span class="term">' + d.RepublicanTerm + '</span>'; });
+    // attempt to switch between electoral votes and popular votes
+    // this is not working yet
+    d3.selectAll("input").on("change", change);
 
 
+    function change() {
+        d3.csv("static/data/elections_data.csv", function(error, data) {
+            // change value of dataset
+            dataset = color.domain(d3.keys(data[0]).filter(function(key) { return key=="DemocraticPopularVotes" || key=="RepublicanPopularVotes" || key=="OtherPopularVotes" ; }));
+            data.forEach(function(d) {
+                d.votes = color.domain().map(function(name) {
+                    return {name: name, votes: +d[name], TotalVotes: parseInt(d['TotalVotes'])};
+                });
+            });
+            // not using the correct data
+            pie = d3.layout.pie()
+                .value(function(d) { console.log(d.votes); return d.votes; });
+            // update the data
+            path = path.data(function(d) { 
+                return pie(d.votes);
+            });
+            path.attr("d", arc); // redraw the arcs
+        });
+    }
 });
 
+// scale function for size of inner and outer radius
 /* SCALE MATH
 OUTER::
 MAX = 74
