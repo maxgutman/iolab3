@@ -10,7 +10,8 @@ var color = d3.scale.ordinal()
     .range(["#4579ad", "#d53f37", "#CCC"]);
 
 var pie = d3.layout.pie()
-    .value(function(d) { return d.votes; });
+    .value(function(d) { return d.votes; })
+    .sort(null);
 
 d3.csv("static/data/elections_data.csv", function(error, data) {
     var dataset = color.domain(d3.keys(data[0]).filter(function(key) { return key=="Democratic" || key=="Republican" || key=="Others" ; }));
@@ -36,60 +37,60 @@ d3.csv("static/data/elections_data.csv", function(error, data) {
         .append("svg")
         .attr("class", "legend")
         .attr("width", 188)
-        .attr("height", 228);
+        .attr("height", 228)
 
     legend.append('text')
         .attr('x', 8)
         .attr('y', 20)
         .attr('class', 'header')
-        .text('Key');
+        .text('Key')
 
     legend.append("rect")
         .attr("x", "3px")
         .attr("y", "42px")
         .attr("width", 20)
         .attr("height", 20)
-        .style("fill", "#4579ad");
+        .style("fill", "#4579ad")
 
     legend.append('text')
         .attr('x', 32)
         .attr('y', 57)
-        .text('Democratic Party');
+        .text('Democratic Party')
 
     legend.append("rect")
         .attr("x", "3px")
         .attr("y", "80px")
         .attr("width", 20)
         .attr("height", 20)
-        .style("fill", "#d53f37");
+        .style("fill", "#d53f37")
 
     legend.append('text')
         .attr('x', 32)
         .attr('y', 95)
-        .text('Republican Party');
+        .text('Republican Party')
 
     legend.append("rect")
         .attr("x", "3px")
         .attr("y", "118px")
         .attr("width", 20)
         .attr("height", 20)
-        .style("fill", "#CCC");
+        .style("fill", "#CCC")
 
     legend.append('text')
         .attr('x', 32)
         .attr('y', 133)
-        .text('Other');
+        .text('Other')
 
     legend.append('circle')
         .attr('cx', 13)
         .attr('cy', 164)
         .attr('r', 10)
-        .style('fill', '#666');
+        .style('fill', '#666')
 
     legend.append('text')
         .attr('x', 32)
         .attr('y', 169)
-        .text('Incumbent Won');
+        .text('Incumbent Won')
     
     legend.append('circle')
         .attr('cx', 13)
@@ -97,12 +98,12 @@ d3.csv("static/data/elections_data.csv", function(error, data) {
         .attr('r', 10)
         .style('fill', "rgba(255, 255, 255, .1)")
         .style('stroke', "#666")
-        .style('stroke-width', 2);
+        .style('stroke-width', 2)
 
     legend.append('text')
         .attr('x', 32)
         .attr('y', 202)
-        .text('Incumbent Lost');
+        .text('Incumbent Lost')
 
     // draw svg
     var svg = d3.select("#smallMultiples")
@@ -114,7 +115,7 @@ d3.csv("static/data/elections_data.csv", function(error, data) {
         .attr("width", 165)
         .attr("height", 185)
         .append("g")
-        .attr("transform", "translate(" + radiusMax + "," + radiusMax + ")");
+        .attr("transform", "translate(" + radiusMax + "," + radiusMax + ")")
 
     // bind electoral vote data and draw path
     var path = svg.selectAll(".arc")
@@ -124,17 +125,20 @@ d3.csv("static/data/elections_data.csv", function(error, data) {
         .style("fill", "white")
         .attr("class", "arc")
         .attr("d", arc)
-        .style("fill", function(d) { return color(d.data.name); });
+        .style("fill", function(d) { return color(d.data.name); })
 
     // add a tooltip using the Tipsy library
     $('svg g').tipsy({ 
-        gravity: 'n', 
-        html: true, 
+        // tooltip will appear either above or below the svg depending on its location in the viewport
+        gravity: $.fn.tipsy.autoNS, 
+        html: true,
         title: function() {
             var d = this.__data__;
-            return "Democratic: " + d.Democratic + " Republican: " + d.Republican + " Other: " + d.Others;
-        }
+            return "<h4>Electoral " + d.Year + "</h3> Democratic: " + d.Democratic + "<br/> Republican: " + d.Republican + "<br/> Other: " + d.Others;
+        },
+        fade: true
     });
+    
 
     // add year to center of donut
     var year = svg.append("text")
@@ -249,31 +253,47 @@ d3.csv("static/data/elections_data.csv", function(error, data) {
             return d.RunnerUp;
         });
 
-    // attempt to switch between electoral votes and popular votes
-    // this is not working yet
-    d3.selectAll("input").on("change", change);
+    // switch between electoral votes and popular votes
+    d3.selectAll("input").on("change", function() {
 
-
-    function change() {
-        d3.csv("static/data/elections_data.csv", function(error, data) {
-            // change value of dataset
+        if ($('input:radio[name=dataset]:checked').val() == 'popular') {
+            // grab popular vote data
             dataset = color.domain(d3.keys(data[0]).filter(function(key) { return key=="DemocraticPopularVotes" || key=="RepublicanPopularVotes" || key=="OtherPopularVotes" ; }));
             data.forEach(function(d) {
                 d.votes = color.domain().map(function(name) {
                     return {name: name, votes: +d[name], TotalVotes: parseInt(d['TotalVotes'])};
                 });
             });
-            // not using the correct data
-            pie = d3.layout.pie()
-                .value(function(d) { console.log(d.votes); return d.votes; });
-            // update the data
-            path = path.data(function(d) { 
-                return pie(d.votes);
+
+            // update data
+            path = path.data(function(d){ return pie(d.votes); });
+
+            // redraw arcs
+            path.transition().duration(750).attr("d", arc);
+
+        }
+
+        else {
+            // grab electoral vote data
+            dataset = color.domain(d3.keys(data[0]).filter(function(key) { return key=="Democratic" || key=="Republican" || key=="Others" ; }));
+            data.forEach(function(d) {
+                d.votes = color.domain().map(function(name) {
+                    return {name: name, votes: +d[name], TotalVotes: parseInt(d['TotalVotes'])};
+                });
             });
-            path.attr("d", arc); // redraw the arcs
-        });
-    }
+
+            // update data
+            path = path.data(function(d){ return pie(d.votes); });
+
+            // redraw arcs
+            path.transition().duration(750).attr("d", arc)
+        }
+
+    });
+    
 });
+
+
 
 // scale function for size of inner and outer radius
 /* SCALE MATH
@@ -299,6 +319,4 @@ $(window).scroll(function() {
         $('nav').removeClass('shadow');
     }
 });
-
-
 

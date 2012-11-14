@@ -35,7 +35,7 @@ nav {
   top: 0;
   background: #30302f;
   width: 100%;
-  padding: 0 10px;
+  padding: 0 ;
   color: #fff;
   font-family: 'Cinzel Decorative', cursive;
   font-size: 24px;
@@ -45,13 +45,18 @@ nav h3 {
   margin: 10px 0;
 }
 
+input {
+  margin: 10px;
+  vertical-align: middle;
+}
+
 .container {
   margin: 0 auto;
 }
 
 #smallMultiples {
   margin-top: 50px;
-  margin-bottom: 40px;
+  /*margin-bottom: 40px;*/
   padding: 10px;
 }
 
@@ -59,6 +64,17 @@ nav h3 {
   -webkit-box-shadow: 0 3px 3px #888;
      -moz-box-shadow: 0 3px 3px #888;
           box-shadow: 0 3px 3px #888;
+  zoom: 1;
+  filter: alpha(opacity=50);
+  opacity: .9;
+}
+
+.tipsy h4 {
+  margin: 4px;
+}
+
+form {
+  margin-left: 20px;
 }
 
 
@@ -67,7 +83,7 @@ TIPSY TOOLTIPS
 **************************************************************************/
 
 .tipsy { font-size: 14px; position: absolute; padding: 5px; z-index: 100000; font-family: 'Anaheim', sans-serif; }
-  .tipsy-inner { background-color: #000; color: #FFF; max-width: 100px; padding: 5px 8px 4px 8px; }
+  .tipsy-inner { background-color: #000; color: #FFF; max-width: 120px; padding: 5px 8px 4px 8px; }
 
   /* Rounded corners */
   .tipsy-inner { border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; }
@@ -172,13 +188,19 @@ and (orientation : portrait) {
   
   h3 {
     font-size: 20px;
-    text-align: center;
+    /*text-align: center;*/
   }
-  /*.container {
-    width: 250px;
-  }*/
+  form {
+    margin-left: 50px;
+  }
   svg {
     margin-left: 50px;
+  }
+  form h3 span {
+    display: block;
+  }
+  #smallMultiples {
+    margin-top: 80px;
   }
 }
 
