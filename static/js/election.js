@@ -152,7 +152,7 @@ d3.csv("static/data/elections_data.csv", function(error, data) {
         });
 
     var img = svg.append("svg:image")
-        .attr("xlink:href", function(d) {return "/static/images/" + d.WinningCandidate + ".png"})
+        .attr("xlink:href", function(d) {return "/static/images/" + $.trim(d.WinningCandidate) + ".png"})
         .attr("x", "-50")
         .attr("y", "-50")
         .attr("opacity", "1")
