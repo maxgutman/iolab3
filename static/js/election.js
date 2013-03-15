@@ -37,7 +37,20 @@ d3.csv("static/data/elections_data.csv", function(error, data) {
         .append("svg")
         .attr("class", "legend")
         .attr("width", 188)
-        .attr("height", 228)
+        .attr("height", 228);
+
+    var legend2 = d3.select("#smallMultiples")
+        .append("svg")
+        .attr("class", "legend")
+        .attr("width", 188)
+        .attr("height", 228) 
+        .append("svg:image")
+        .attr("xlink:href", "/static/images/potus.png")
+        .attr("x", "0")
+        .attr("y", "0")
+        .attr("opacity", "1")
+        .attr("width", "188")
+        .attr("height", "228");              
 
     legend.append('text')
         .attr('x', 8)
@@ -105,6 +118,7 @@ d3.csv("static/data/elections_data.csv", function(error, data) {
         .attr('y', 202)
         .text('Incumbent Lost')
 
+
     // draw svg
     var svg = d3.select("#smallMultiples")
         .selectAll("pie")
@@ -113,9 +127,37 @@ d3.csv("static/data/elections_data.csv", function(error, data) {
         .append("svg")
         .attr("class", "pie")
         .attr("width", 165)
-        .attr("height", 185)
+        .attr("height", 205)
         .append("g")
-        .attr("transform", "translate(" + radiusMax + "," + radiusMax + ")")
+        .attr("transform", "translate(" + radiusMax + "," + radiusMax + ")") 
+
+    // draw rectangular border around small multiples with color indicating winning party
+    svg.append("rect")
+        .attr("x", -100)
+        .attr("y", -120)
+        .attr("width", 200)
+        .attr("height", 240)
+        .attr("fill", "white")
+        .attr("stroke-width", 2) 
+        .attr("stroke", function(d) { 
+            if(parseInt(d.Democratic) > parseInt(d.Republican) && parseInt(d.Democratic) > parseInt(d.Others)) {
+                return "#4579ad";
+            }
+            else if(parseInt(d.Republican) > parseInt(d.Democratic) && parseInt(d.Republican) > parseInt(d.Others)) {
+                return "#d53f37";
+            }
+            else{
+                return "#666";
+            }
+        });
+
+    var img = svg.append("svg:image")
+        .attr("xlink:href", function(d) {return "/static/images/" + d.WinningCandidate + ".png"})
+        .attr("x", "-50")
+        .attr("y", "-50")
+        .attr("opacity", "1")
+        .attr("width", "100")
+        .attr("height", "110"); 
 
     // bind electoral vote data and draw path
     var path = svg.selectAll(".arc")
@@ -138,13 +180,16 @@ d3.csv("static/data/elections_data.csv", function(error, data) {
         },
         fade: true
     });
+
     
 
     // add year to center of donut
     var year = svg.append("text")
         .attr("dy", ".35em")
         .attr('class', 'year')
-        .style("text-anchor", "middle")
+ //       .style("text-anchor", "middle")
+        .attr("x", "50")
+        .attr("y", "130") 
         .text(function(d) { return d.Year; });
 
     // set color of year depending on winning party
@@ -161,25 +206,6 @@ d3.csv("static/data/elections_data.csv", function(error, data) {
     });
 
 
-    // draw rectangular border around small multiples with color indicating winning party
-    svg.append("rect")
-        .attr("x", -100)
-        .attr("y", -120)
-        .attr("width", 200)
-        .attr("height", 240)
-        .attr("fill", "rgba(255, 255, 255, .1)")
-        .attr("stroke-width", 2)
-        .attr("stroke", function(d) { 
-            if(parseInt(d.Democratic) > parseInt(d.Republican) && parseInt(d.Democratic) > parseInt(d.Others)) {
-                return "#4579ad";
-            }
-            else if(parseInt(d.Republican) > parseInt(d.Democratic) && parseInt(d.Republican) > parseInt(d.Others)) {
-                return "#d53f37";
-            }
-            else{
-                return "#666";
-            }
-        });
 
     // Write name of elected president above donut diagram 
     var president = svg.append('svg:text')
@@ -252,6 +278,7 @@ d3.csv("static/data/elections_data.csv", function(error, data) {
         .text(function(d) {
             return d.RunnerUp;
         });
+
 
     // switch between electoral votes and popular votes
     d3.selectAll("input").on("change", function() {

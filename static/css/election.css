@@ -16,6 +16,8 @@ svg {
 svg.legend {
   padding: 5px;
   border: 2px solid #666;
+  background-color: white;
+  margin-bottom: 40px;
 }
 
 .arc {
